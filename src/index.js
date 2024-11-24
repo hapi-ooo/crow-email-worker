@@ -14,7 +14,8 @@ const sendEmail = async (data, env) => {
 			<p>Hi ${data.firstName}, thanks for reaching out!</p>
 			<p>We'll get back to you soon regarding your message. In the meantime, feel free to reply to this email with any more info you want us to know.</p>
 			<br />
-			<p>Message received: ${data.message}</p>
+			<p>Message received:</p>
+			<p>${data.message}</p>
 			<br />
 			<p>Best regards,</p>
 			<p>Crow Software</p>
@@ -43,6 +44,8 @@ const extractFormData = (body) => {
 				return;
 			case 'message':
 				data.message = field.value;
+				const regex = /(<|>)/
+				data.message = data.message.replace(regex, '');
 				return;
 			default:
 				return;
