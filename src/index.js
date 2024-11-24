@@ -11,11 +11,13 @@ const sendEmail = async (data, env) => {
 			Cc: "contact@crow-software.com",
       Subject: `Thanks for Reaching Out ${data.firstName} ${data.lastName}`,
       HtmlBody: `
-			<p>Hi ${data.firsName}, thanks for reaching out!</p>
+			<p>Hi ${data.firstName}, thanks for reaching out!</p>
 			<p>We'll get back to you soon regarding your message. In the meantime, feel free to reply to this email with any more info you want us to know.</p>
-			<p><strong>Message received</strong>: ${data.message}</p>
+			<br />
+			<p>Message received: ${data.message}</p>
+			<br />
 			<p>Best regards,</p>
-			<p><strong>Crow Software</p>
+			<p>Crow Software</p>
 			`,
     }),
   });
