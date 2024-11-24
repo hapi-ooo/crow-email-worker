@@ -45,7 +45,7 @@ const extractFormData = (body) => {
 			case 'message':
 				data.message = field.value;
 				const regex = /(<|>)/
-				data.message = data.message.replace(regex, '');
+				data.message = data.message.replaceAll(regex, '');
 				return;
 			default:
 				return;
