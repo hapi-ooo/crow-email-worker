@@ -35,27 +35,9 @@ const extractFormData = (body) => {
 	data.lastName = body.data['lastName'];
 	data.email = body.data['email'];
 	data.message = body.data['message'];
+	const regex = /(<|>)/g
+	data.message = data.message.replaceAll(regex, '');
 	return data;
-	// .forEach(field => {
-	// 	switch (field.key) {
-	// 		case 'first-name':
-	// 			data.firstName = field.value;
-	// 			return;
-	// 		case 'last-name':
-	// 			data.lastName = field.value;
-	// 			return;
-	// 		case 'email':
-	// 			data.email = field.value;
-	// 			return;
-	// 		case 'message':
-	// 			data.message = field.value;
-	// 			const regex = /(<|>)/g
-	// 			data.message = data.message.replaceAll(regex, '');
-	// 			return;
-	// 		default:
-	// 			return;
-	// 	}
-	// });
 }
 
 export default {
