@@ -42,6 +42,7 @@ const extractFormData = (body) => {
 
 export default {
   async fetch(request, env, ctx) {
+		console.log(request);
 		const origin = request.headers.get('origin');
 		if (!origin) {
 			return new Response('Bad request', {status: 400});
