@@ -70,6 +70,10 @@ export default {
 			res.headers.set("Content-Type", "application/json");
 			return res;
 		}
-		return new Response("Method not allowed", { status: 405 });
+		let res = new Response("Method not allowed", { status: 405 });
+		res.headers.set("Access-control-Allow-Origin", "*");
+		res.headers.set("Access-control-Allow-Headers", "Content-Type");
+		res.headers.set("Content-Type", "application/json");
+		return res;
   },
 };
