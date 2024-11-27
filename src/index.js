@@ -57,15 +57,17 @@ export default {
 			const body = await request.json();
 			const data = extractFormData(body);
 			let res = await sendEmail(data, env);
-			res = new Response(res.body, { status: res.status });
+			res = new Response(res.body.Message, { status: res.status });
 			res.headers.set("Access-control-Allow-Origin", "*");
 			res.headers.set("Access-control-Allow-Headers", "Content-Type");
+			res.headers.set("Content-Type", "application/json");
 			return res;
 		}
 		if (request.method === "OPTIONS") {
-			let res = new Response('ok');
+			let res = new Response();
 			res.headers.set("Access-control-Allow-Origin", "*");
 			res.headers.set("Access-control-Allow-Headers", "Content-Type");
+			res.headers.set("Content-Type", "application/json");
 			return res;
 		}
 		return new Response("Method not allowed", { status: 405 });
